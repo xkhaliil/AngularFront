@@ -1,0 +1,53 @@
+<div class="container">
+    <div>
+    <h2>UPDATE :</h2>
+    </div>
+    <form >
+    <div  hidden class="col-sm-2 col-md-2 col-lg-2">
+    <label >ID </label>
+    <input  readonly type="text" [(ngModel)]="currentGame.idGame"
+    name="id" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4" >
+    <label >NAME </label>
+    <input type="text"[(ngModel)]= "currentGame.nomGame"
+    name="nom" class="form-control">
+    </div>
+
+    <div class="col-sm-4 col-md-4 col-lg-4">
+        <label >RELEASE DATE</label>
+
+<input type="date" [ngModel]="currentGame.dateFound | date: 'yyyy-MM-dd'"
+(ngModelChange)=" currentGame.dateFound= $event" name="datematch"
+class="form-control">
+</div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+            <label >GENRE</label>
+        </div>
+<div class="col-sm-4 col-md-4 col-lg-4">
+    <select class="form-control form-control-lg" id="idCat" name="idCat"
+    [(ngModel)]="updatedid">
+    <option *ngFor="let cat of genre" [value]="cat.idLeg" >
+
+    {{cat.nomGenre}}
+
+    </option>
+    </select>
+    </div>
+    <div class="col-sm-16 col-md-16 col-lg-16">
+        <img [src]="myImage" class="card-img-top img-fluid rounded-start"
+        style="width: 500px; height: 300px" />
+        </div>
+        <div class="col-sm-16 col-md-16 col-lg-16">
+            <label class="mb-2">IMAGE</label>
+            <input type="file" (change)="onImageUpload($event)" class="form-control">
+            </div>
+
+<div class="mt-2">
+
+<button type="submit" (click)="updateGame()" class="btn btn-success" >UPDATE</button>
+
+</div>
+</form>
+
+</div>

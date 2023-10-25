@@ -1,0 +1,92 @@
+<style>
+    /* Add your custom CSS styles here */
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .card {
+        margin-top: 20px;
+    }
+
+    .table {
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px 12px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #007BFF;
+        color: #fff;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .btn-info {
+        background-color: #17a2b8;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-info:hover {
+        background-color: #138496;
+    }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
+</style>
+
+<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <tr>
+                    <th>Name</th>
+                    <th>Roles</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tbody *ngFor="let a of users">
+                <tr>
+                    <td>{{a.username}}</td>
+                    <td>
+                            <span *ngFor="let r of a.roles">
+                    <td>
+                        {{r.role}}
+                    </td>
+                    </span>
+                    </td>
+                    <td>
+                        <button class="btn btn-info" [routerLink]="['/add-role-for-user', a.user_id]">Add role</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" (click)="deleteUser(a.user_id)">Delete</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

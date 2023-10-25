@@ -1,0 +1,81 @@
+<style>
+    /* Add your custom CSS styles here */
+    .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+    }
+
+    .card {
+        margin-top: 20px;
+    }
+
+    .table {
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px 12px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #007BFF;
+        color: #fff;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>
+
+<div class="container">
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+        <label>Nom genre</label>
+        <input type="text" class="form-control" [(ngModel)]="Genre.nomGenre" name="nomgenre">
+    </div>
+    <div class="mt-2">
+        <button type="submit" (click)="AjouterGenre()" class="btn btn-success">Ajouter</button>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom genre</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody *ngFor="let l of genre">
+                <tr>
+                    <td>{{l.idLeg}}</td>
+                    <td>{{l.nomGenre}}</td>
+                    <td><a class="btn btn-success" (click)="updateleg(l)">Editer</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

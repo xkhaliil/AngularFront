@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Game List</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        .card {
+            border: none;
+            border-radius: 5px;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th, .table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .table th {
+            background-color: #007BFF;
+            color: #fff;
+        }
+
+        .table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .table tr:hover {
+            background-color: #e0e0e0;
+        }
+
+        .btn-danger, .btn-success {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+        }
+
+        .btn-danger:hover {
+            background-color: #b21f2d;
+        }
+
+        .btn-success {
+            background-color: #28A745;
+        }
+
+        .btn-success:hover {
+            background-color: #1e7d35;
+        }
+
+        img.card-img-top {
+            height: 50px;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <table class="table table-striped">
+                <tr>
+                    <th>ID</th>
+                    <th>GAME</th>
+                    <th>RELEASE DATE</th>
+                    <th>GENRE</th>
+                    <th>PICTURE</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tbody *ngFor="let game of game">
+                <tr>
+                    <td>{{game.idGame}}</td>
+                    <td>{{game.nomGame}}</td>
+                    <td>{{game.dateFound | date:'dd/MM/yyyy'}}</td>
+                    <td>{{game.genre.nomGenre}}</td>
+                    <td>
+                        <img class="card-img-top img-responsive" src="{{game.imageStr}}" style="height: 50px; width: 100px">
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" *ngIf="authService.isAdmin()" (click)="supprimergame(game)">DELETE</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-success" *ngIf="authService.isAdmin()" [routerLink]="['/update-game',game.idGame]">UPDATE</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
